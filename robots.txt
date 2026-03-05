@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://tryfizz.com/sitemap.xml

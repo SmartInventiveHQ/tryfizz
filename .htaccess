@@ -1,0 +1,32 @@
+# ----------------------------------------------------------------------
+# TRYFIZZ.COM - Server Configuration
+# ----------------------------------------------------------------------
+
+RewriteEngine On
+
+# 1. Force HTTPS and Redirect to Non-WWW
+# (Better for short, punchy domains like tryfizz.com)
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} ^www\.tryfizz\.com [NC]
+RewriteRule ^(.*)$ https://tryfizz.com/$1 [L,R=301]
+
+# 2. Browser Caching (Optimize Speed)
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresDefault "access plus 1 month"
+    ExpiresByType text/html "access plus 1 day"
+    ExpiresByType text/css "access plus 1 week"
+    ExpiresByType application/javascript "access plus 1 week"
+    ExpiresByType image/x-icon "access plus 1 year"
+</IfModule>
+
+# 3. GZIP Compression (Reduce File Size)
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/plain text/html text/xml text/css application/javascript application/x-javascript
+</IfModule>
+
+# 4. Security: Disable Directory Listing
+Options -Indexes
+
+# 5. Set Default Charset
+AddDefaultCharset UTF-8
