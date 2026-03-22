@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://tryfizz.com/</loc>
-    <lastmod>2026-03-15</lastmod>
+    <lastmod>2026-03-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://tryfizz.com/og-image.jpg</image:loc>
-      <image:title>Fizz Referral Code 8FNUF $40 Bonus 2026</image:title>
-      <image:caption>Use verified Fizz referral code 8FNUF for a $25-$100 bonus on mobile and internet plans.</image:caption>
+      <image:loc>https://tryfizz.com/highway-car.webp</image:loc>
+      <image:title>Fizz Referral Code 8FNUF - $25 to $100 Bonus 2026</image:title>
+      <image:caption>Use verified Fizz referral code 8FNUF to escape your old contract and get a welcome bonus on mobile and internet plans.</image:caption>
     </image:image>
   </url>
 </urlset>
