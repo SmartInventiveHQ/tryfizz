@@ -1,5 +1,46 @@
-# 1. Force HTTPS, Remove WWW and Strip Query Strings (?ND, ?SD)
+# ----------------------------------------------------------------------
+# TRYFIZZ.COM - OPTIMIZED REDIRECTS & CACHE (2026)
+# ----------------------------------------------------------------------
+
+RewriteEngine On
+RewriteBase /
+
+# 1. UNIVERSAL RULE: Force HTTPS, Remove WWW, and Strip Query Strings
+# This handles http://, www., and parameters in one move.
 RewriteCond %{HTTPS} off [OR]
 RewriteCond %{HTTP_HOST} ^www\.tryfizz\.com [NC]
-# The rule below performs a 301 redirect and strips parameters (the '?' at the end)
 RewriteRule ^(.*)$ https://tryfizz.com/$1? [L,R=301]
+
+# 2. STRIP PARAMETERS for existing HTTPS traffic
+# Example: Redirects https://tryfizz.com/?ND to https://tryfizz.com/
+RewriteCond %{QUERY_STRING} .
+RewriteRule ^(.*)$ https://tryfizz.com/$1? [L,R=301]
+
+# 3. WEBP SUPPORT & BROWSER CACHING
+# Helps with Google PageSpeed Insights and SEO image indexing.
+AddType image/webp .webp
+
+<IfModule mod_expires.c>
+    ExpiresActive On
+    
+    # Default cache: 1 month
+    ExpiresDefault "access plus 1 month"
+    
+    # Images & Icons: 1 year (Best for the highway-car.webp)
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/x-icon "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    
+    # CSS/JS: 1 year
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+</IfModule>
+
+# 4. SECURITY & CLEANUP
+# Prevent folder snooping
+Options -Indexes
+
+# 5. ERROR HANDLING (Optional)
+# Redirect 404s back to home to keep users on the landing page
+ErrorDocument 404 https://tryfizz.com/
